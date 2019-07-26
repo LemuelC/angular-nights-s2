@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 import { JsonPlaceholderService } from '../../service/json-placeholder.service'
+import { HttpClient } from '@angular/common/http';
+
 
 export class Feed {
 	author: any = ''
@@ -21,13 +23,15 @@ export class Feed {
 export class HomeComponent implements OnInit {
 	posts: Feed[] = []
 	feed = new Feed()
+	svc: JsonPlaceholderService
 	constructor() {}
 
 	ngOnInit() {}
 
 	post() {
 		this.posts.push(this.feed)
+		// this.svc.createPost(this.feed);
 		this.posts.reverse()
-		this.feed = new Feed()
+		this.feed = new Feed()	
 	}
 }
